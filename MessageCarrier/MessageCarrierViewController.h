@@ -26,6 +26,7 @@
     UIButton *sendMessageBtn;
     UIButton *chooseContact;
     UISegmentedControl *messageType;
+    UISegmentedControl *messageStatus;
     UITextField *toField;
     UILabel *charCounter;
     UILabel *connectionLabel;
@@ -46,6 +47,7 @@
 @property (nonatomic, retain) IBOutlet UIButton *sendMessageBtn;
 @property (nonatomic, retain) IBOutlet UIButton *chooseContact;
 @property (nonatomic, retain) IBOutlet UISegmentedControl *messageType;
+@property (nonatomic, retain) IBOutlet UISegmentedControl *messageStatus;
 @property (nonatomic, retain) IBOutlet UITextField *toField;
 @property (nonatomic, retain) IBOutlet UILabel *connectionLabel;
 
@@ -58,6 +60,7 @@
 -(void)sendMessage;
 - (IBAction)SendMessageClicked:(id)sender;
 - (IBAction)MessageTypeChanged:(id)sender;
+- (IBAction)MessageStatusChanged:(id)sender;
 - (void)setConnectionCount:(NSUInteger) cnt;
 
 - (void) messageDelivery;

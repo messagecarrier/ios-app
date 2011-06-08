@@ -63,7 +63,7 @@
 
 +(void)serverSendMessage:(OutOfBandMessage*)message{
     NSLog(@"Sending %@ %@ To Server",message,[message string]);
-    NSMutableURLRequest * request=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://208.78.40.74:9292/messages"]
+    NSMutableURLRequest * request=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://ec2-50-16-136-235.compute-1.amazonaws.com:9292/messages"]
                                                           cachePolicy:NSURLRequestUseProtocolCachePolicy
                                                       timeoutInterval:60.0];
     [request setHTTPMethod:@"POST"];

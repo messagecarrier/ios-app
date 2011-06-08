@@ -25,6 +25,8 @@ typedef enum
     
 } MESSAGE_STATUS;
 
+
+
 @interface OutOfBandMessage : NSManagedObject {
 @private
 }
@@ -39,6 +41,7 @@ typedef enum
 @property (nonatomic, retain) NSNumber * TimeStamp;
 
 @property (nonatomic, retain) NSNumber * MessageType;
+@property (nonatomic, retain) NSNumber * MessageStatus;
 @property (nonatomic, retain) NSString * SenderName;
 @property (nonatomic, retain) NSString * MessageBody;
 

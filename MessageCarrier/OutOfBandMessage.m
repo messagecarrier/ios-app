@@ -22,6 +22,7 @@
 @dynamic TimeStamp;
 
 @dynamic MessageType;
+@dynamic MessageStatus;
 @dynamic SenderName;
 @dynamic MessageBody;
 
@@ -30,7 +31,7 @@
     
 	NSMutableDictionary *dict = [[[NSMutableDictionary alloc] initWithCapacity:50] autorelease];
     
-    if (self.SourceID && self.MessageID && self.Destination && self.HopCount && self.Location && self.TimeStamp && self.MessageType && self.SenderName && self.MessageBody) {
+    if (self.SourceID && self.MessageID && self.Destination && self.HopCount && self.Location && self.TimeStamp && self.MessageType && self.MessageStatus && self.SenderName && self.MessageBody) {
         [dict setObject: self.SourceID          forKey: @"sourceid"];
         [dict setObject: self.MessageID         forKey: @"messageid"];
         [dict setObject: self.Destination       forKey: @"destination"];
@@ -38,6 +39,7 @@
         [dict setObject: self.Location          forKey: @"location"];
         [dict setObject: self.TimeStamp         forKey: @"timestamp"];
         [dict setObject: self.MessageType       forKey: @"messagetype"];
+        [dict setObject: self.MessageStatus     forKey: @"messagestatus"];
         [dict setObject: self.SenderName        forKey: @"sendername"];
         [dict setObject: self.MessageBody       forKey: @"messagebody"];
     }
@@ -54,11 +56,15 @@
     self.Location = [dictionary objectForKey: @"location"];
     self.TimeStamp = [dictionary objectForKey: @"timestamp"];
     self.MessageType = [dictionary objectForKey: @"messagetype"];
+    self.MessageStatus = [dictionary objectForKey: @"messagestatus"];
     self.SenderName = [dictionary objectForKey: @"sendername"];
     self.MessageBody = [dictionary objectForKey: @"messagebody"];
 }
 
 -(NSString *) string {
-    return [NSString stringWithFormat:@"Status = %@\nSourceID = %@\nMessageID=%@\nDestination=%@\nHopCount=%@\nLocation=%@\nTimeStamp=%@\nMessageType=%@\nSenderName=%@\nMessageBody=%@",self.Status,self.SourceID,self.MessageID,self.Destination,self.HopCount,self.Location,self.TimeStamp,self.MessageType,self.SenderName,self.MessageBody];
+    
+    NSLog(@"%@", [NSString stringWithFormat:@"Status = %@\nSourceID = %@\nMessageID=%@\nDestination=%@\nHopCount=%@\nLocation=%@\nTimeStamp=%@\nMessageType=%@\nMessageStatus=%@\nSenderName=%@\nMessageBody=%@",self.Status,self.SourceID,self.MessageID,self.Destination,self.HopCount,self.Location,self.TimeStamp,self.MessageType,self.MessageStatus,self.SenderName,self.MessageBody]);
+    
+    return [NSString stringWithFormat:@"Status = %@\nSourceID = %@\nMessageID=%@\nDestination=%@\nHopCount=%@\nLocation=%@\nTimeStamp=%@\nMessageType=%@\nMessageStatus=%@\nSenderName=%@\nMessageBody=%@",self.Status,self.SourceID,self.MessageID,self.Destination,self.HopCount,self.Location,self.TimeStamp,self.MessageType,self.MessageStatus,self.SenderName,self.MessageBody];
 }
 @end

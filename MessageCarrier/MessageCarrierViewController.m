@@ -15,7 +15,7 @@
 @implementation MessageCarrierViewController
 @synthesize charCounter;
 @synthesize chooseContact;
-@synthesize MessageField, sentCnt, deliveredCnt, carriedCnt, sendMessageBtn, toField, messageType, locationManager;
+@synthesize MessageField, sentCnt, deliveredCnt, carriedCnt, sendMessageBtn, toField, messageType, messageStatus, locationManager;
 @synthesize connectionLabel, coords;
 
 @synthesize networkManager;
@@ -34,6 +34,7 @@
     [self.sendMessageBtn dealloc];
     [self.toField dealloc];
     [self.messageType dealloc];
+    [self.messageStatus dealloc];    
     [locationManager dealloc];
 }
 
@@ -78,6 +79,8 @@
     //load from db
     NSManagedObjectContext *context = [MessageCarrierAppDelegate sharedMessageCarrierAppDelegate].managedObjectContext;
     NSFetchRequest *request = [[MessageCarrierAppDelegate sharedMessageCarrierAppDelegate]createFetchRequestForMessage];
+    
+    NSLog(@"fetching");
     
     NSError *err;
     NSUInteger totalRecords = [context countForFetchRequest:request error:&err];
@@ -264,6 +267,58 @@
 
 - (IBAction)SendMessageClicked:(id)sender
 {	
+    
+    NSLog(@"message status number: %d", [self.messageStatus selectedSegmentIndex]);
+    NSLog(@"message type number: %d", [self.messageType selectedSegmentIndex]);
+
+    int stat = [self.messageStatus selectedSegmentIndex];
+
+    //    self.message.MessageType    = [NSNumber numberWithInt: [self.messageType selectedSegmentIndex]];    
+
+    /*
+    switch (self.messageType.selectedSegmentIndex) {
+        case 0:
+            if (stat==0) {
+                self.message.MessageType = [NSNumber numberWithInt: 0];
+            }
+            else if (stat==1) {
+                self.message.MessageType = [NSNumber numberWithInt: 1];
+            }
+            else {
+                self.message.MessageType = [NSNumber numberWithInt: 2];            
+            }
+            break;
+        case 1:
+            if (stat==0) {
+                self.message.MessageType = [NSNumber numberWithInt: 0];
+            }
+            else if (stat==1) {
+                self.message.MessageType = [NSNumber numberWithInt: 1];
+            }
+            else {
+                self.message.MessageType = [NSNumber numberWithInt: 2];            
+            }
+            break;
+        case 2:
+            if (stat==0) {
+                self.message.MessageType = [NSNumber numberWithInt: 0];
+            }
+            else if (stat==1) {
+                self.message.MessageType = [NSNumber numberWithInt: 1];
+            }
+            else {
+                self.message.MessageType = [NSNumber numberWithInt: 2];            
+            }
+            break;
+        default:
+            break;
+    }
+     */
+    
+    
+    
+    
+    
     if ([self.MessageField.text length] == 0 || ([self.toField.text length]==0 && self.messageType.selectedSegmentIndex != 2)) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Invalid Message"
                                    message: @"Please provide a valid message and destination"
@@ -293,7 +348,9 @@
     }
     self.message.TimeStamp      = [NSNumber numberWithInt:[[NSDate date] timeIntervalSince1970]];
     
-    self.message.MessageType    = [NSNumber numberWithInt: [self.messageType selectedSegmentIndex]];
+    self.message.MessageType    = [NSNumber numberWithInt: [self.messageType selectedSegmentIndex]];    
+    self.message.MessageStatus  = [NSNumber numberWithInt: [self.messageStatus selectedSegmentIndex]];
+
     self.message.SenderName     = @"Somebody";
     self.message.MessageBody    = self.MessageField.text;
     
@@ -310,6 +367,32 @@
     }else{
         NSLog(@"Error Creating Message");
     }
+}
+
+- (IBAction)MessageStatusChanged:(id)sender {
+        NSLog(@"Message Status Changed");    
+    
+        /*
+        int statusNumber = [self.messageStatus selectedSegmentIndex];
+    
+        NSString *message;
+
+        if (statusNumber==0) {
+            message = [NSString stringWithFormat: @"I'm OK. Will be sent to Ushahidi."];
+        }
+        else if (statusNumber==1) {
+            message = [NSString stringWithFormat: @"Emergency. Will be sent to Ushahidi."];
+        }
+        else {
+            message = [NSString stringWithFormat: @"Private. Will not be sent to Ushahidi."];
+        }
+        NSString *title = [NSString stringWithFormat: @"Incident Status"];
+    
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message
+                                                       delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];;
+	[alert show];
+	[alert release];
+         */
 }
 
 - (IBAction)MessageTypeChanged:(id)sender
@@ -336,6 +419,7 @@
             break;
     }
 }
+
 - (IBAction)choseContactTouch:(id)sender {
     ABPeoplePickerNavigationController *picker = [[ABPeoplePickerNavigationController alloc] init];
     if (self.messageType.selectedSegmentIndex == 0) {

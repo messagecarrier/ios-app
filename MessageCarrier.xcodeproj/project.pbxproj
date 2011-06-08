@@ -53,6 +53,8 @@
 		6C74F9431399FFEE00A2DB22 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C74F9421399FFEE00A2DB22 /* icon@2x.png */; };
 		6CED60FD1399E13B00103320 /* UITextViewWithPlaceholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CED60FC1399E13B00103320 /* UITextViewWithPlaceholder.m */; };
 		6CED61081399E6E000103320 /* 027-AddressBook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CED61071399E6E000103320 /* 027-AddressBook@2x.png */; };
+		DB1DAC76139C0F4B000D4566 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB1DAC75139C0F4B000D4566 /* Entitlements.plist */; };
+		DB1DAC77139C0F4B000D4566 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB1DAC75139C0F4B000D4566 /* Entitlements.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +140,7 @@
 		6CED60FB1399E13B00103320 /* UITextViewWithPlaceholder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITextViewWithPlaceholder.h; sourceTree = "<group>"; };
 		6CED60FC1399E13B00103320 /* UITextViewWithPlaceholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITextViewWithPlaceholder.m; sourceTree = "<group>"; };
 		6CED61071399E6E000103320 /* 027-AddressBook@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "027-AddressBook@2x.png"; sourceTree = "<group>"; };
+		DB1DAC75139C0F4B000D4566 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +176,7 @@
 		17659FC313997FC8009DF548 = {
 			isa = PBXGroup;
 			children = (
+				DB1DAC75139C0F4B000D4566 /* Entitlements.plist */,
 				6C13CA5D139A45DA00226B59 /* CoreLocation.framework */,
 				6C13CA5B139A35D300226B59 /* SystemConfiguration.framework */,
 				6C74F9421399FFEE00A2DB22 /* icon@2x.png */,
@@ -395,6 +399,7 @@
 				6C74F9361399EC3300A2DB22 /* action-pressed.png in Resources */,
 				6C74F9411399FFE100A2DB22 /* icon.png in Resources */,
 				6C74F9431399FFEE00A2DB22 /* icon@2x.png in Resources */,
+				DB1DAC76139C0F4B000D4566 /* Entitlements.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,6 +409,7 @@
 			files = (
 				17659FFD13997FC8009DF548 /* InfoPlist.strings in Resources */,
 				1765A00013997FC8009DF548 /* MessageCarrierTests.h in Resources */,
+				DB1DAC77139C0F4B000D4566 /* Entitlements.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,6 +520,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = RHoK;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -523,6 +530,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -531,6 +539,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = RHoK;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
@@ -538,6 +547,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
@@ -546,6 +556,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -561,6 +572,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MessageCarrier/MessageCarrier-Prefix.pch";
@@ -615,6 +627,64 @@
 			};
 			name = Release;
 		};
+		DB1DAC71139C0E95000D4566 /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = RHoK;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = RHoK;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos;
+			};
+			name = "Ad Hoc";
+		};
+		DB1DAC72139C0E95000D4566 /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MessageCarrier/MessageCarrier-Prefix.pch";
+				INFOPLIST_FILE = "MessageCarrier/MessageCarrier-Info.plist";
+				PRODUCT_NAME = MsgCarrier;
+				VALIDATE_PRODUCT = NO;
+				WRAPPER_EXTENSION = app;
+			};
+			name = "Ad Hoc";
+		};
+		DB1DAC73139C0E95000D4566 /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MessageCarrier.app/MessageCarrier";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MessageCarrierTests/MessageCarrierTests-Prefix.pch";
+				INFOPLIST_FILE = "MessageCarrierTests/MessageCarrierTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = "Ad Hoc";
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -622,6 +692,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1765A00313997FC9009DF548 /* Debug */,
+				DB1DAC71139C0E95000D4566 /* Ad Hoc */,
 				1765A00413997FC9009DF548 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -631,6 +702,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1765A00613997FC9009DF548 /* Debug */,
+				DB1DAC72139C0E95000D4566 /* Ad Hoc */,
 				1765A00713997FC9009DF548 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -640,6 +712,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1765A00913997FC9009DF548 /* Debug */,
+				DB1DAC73139C0E95000D4566 /* Ad Hoc */,
 				1765A00A13997FC9009DF548 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
